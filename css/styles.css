@@ -38,10 +38,11 @@ img {
   max-width: 100%;
   height: auto;
 }
-
+.team .container{
+  padding: 0 28px;
+}
 .container {
-  width: 100%;
-  max-width: 428px;
+  max-width: 320px;
   padding: 0 16px;
   margin: 0 auto;
 }
@@ -96,7 +97,7 @@ img {
     url("../images/hero-bg.jpg");
   background-size: cover;
   background-position: center;
-  padding: 112px 0;
+  padding: 72px 0;
   text-align: center;
   color: var(--white-color);
 }
@@ -107,9 +108,9 @@ img {
   }
 }
 .hero-title {
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 700;
-  margin-bottom: 48px;
+  margin-bottom: 72px;
 }
 .hero-button {
   padding: 16px 32px;
@@ -175,11 +176,10 @@ img {
   border-radius: 0 0 4px 4px;
   box-shadow: 0 1px 6px rgba(46, 47, 66, 0.08);
   text-align: center;
-  padding-bottom: 32px;
 }
 
 .team-info {
-  padding-top: 32px;
+  padding-top: 32px 16px;
 }
 
 .social-list { display: flex; justify-content: center; gap: 24px; margin-top: 8px; }
@@ -232,7 +232,7 @@ img {
 .page-footer {
   background-color: var(--secondary-color);
   color: var(--light-color);
-  padding: 100px 0;
+  padding: 96px 0;
 }
 .footer-wrap {
   display: flex;
@@ -436,7 +436,6 @@ textarea:focus {
 @media (min-width: 768px) {
   .container {
     max-width: 768px;
-    padding: 0 32px;
   }
   .contacts {
     display: block;
