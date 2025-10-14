@@ -26,6 +26,11 @@
             <li><a href="#" class="nav-link">Contacts</a></li>
           </ul>
         </nav>
+        <button class="mobile-menu-open-btn" type="button">
+          <svg class="mobile-menu-open-btn-icon" width="16.8" height="14.4">
+            <use href="./images/icons.svg#icon-burger"></use>
+          </svg>
+        </button>
         <address class="contacts">
           <ul class="contacts-list">
             <li><a href="mailto:info@devstudio.com" class="contact-link">info@devstudio.com</a></li>
@@ -320,7 +325,60 @@
         </div>
       </div>
     </footer>
+<div class="mobile-menu"> 
+  <div class="container mobile-menu-container">
+    <button class="mobile-menu-close-btn">
+<svg class="mobile-menu-close-btn-icon" width="24" height="24"> 
+  <use href="./images/icons.svg#icon-close"> </use>
+</svg>
+    </button>
+    <!-- ВСТАВИТЬ СЮДА, сразу после кнопки .mobile-menu-close-btn -->
+<nav class="mobile-menu-nav">
+  <ul class="mobile-menu-list">
+    <li><a class="mobile-menu-link current" href="./index.html">Studio</a></li>
+    <li><a class="mobile-menu-link" href="#">Portfolio</a></li>
+    <li><a class="mobile-menu-link" href="#">Contacts</a></li>
+  </ul>
+</nav>
 
+<div class="mobile-menu-contacts">
+  <a class="mobile-menu-tel" href="tel:+110001111111">+11 (000) 111-11-11</a>
+  <a class="mobile-menu-mail" href="mailto:info@devstudio.com">info@devstudio.com</a>
+</div>
+
+<ul class="mobile-menu-social social-list">
+  <li class="social-item">
+    <a class="social-link" href="#" aria-label="Instagram">
+      <svg class="social-svg" width="16" height="16">
+        <use href="./images/icons.svg#icon-instagram"></use>
+      </svg>
+    </a>
+  </li>
+  <li class="social-item">
+    <a class="social-link" href="#" aria-label="Twitter">
+      <svg class="social-svg" width="16" height="16">
+        <use href="./images/icons.svg#icon-twitter"></use>
+      </svg>
+    </a>
+  </li>
+  <li class="social-item">
+    <a class="social-link" href="#" aria-label="Facebook">
+      <svg class="social-svg" width="16" height="16">
+        <use href="./images/icons.svg#icon-facebook"></use>
+      </svg>
+    </a>
+  </li>
+  <li class="social-item">
+    <a class="social-link" href="#" aria-label="LinkedIn">
+      <svg class="social-svg" width="24" height="24">
+        <use href="./images/icons.svg#icon-linkedin"></use>
+      </svg>
+    </a>
+  </li>
+</ul>
+
+  </div>
+</div>
     <div class="backdrop is-hidden" data-modal>
       <div class="modal">
         <button type="button" class="modal-close" data-modal-close>
@@ -371,6 +429,61 @@
         </form>
       </div>
     </div>
+<script>
+  (function () {
+    const menu = document.querySelector('.mobile-menu');
+    const openBtn = document.querySelector('.mobile-menu-open-btn');
+    const closeBtn = document.querySelector('.mobile-menu-close-btn');
+
+    if (!menu || !openBtn || !closeBtn) return; 
+
+    openBtn.setAttribute('aria-expanded', 'false');
+    openBtn.setAttribute('aria-controls', 'mobile-menu');
+    menu.setAttribute('id', 'mobile-menu');
+    menu.setAttribute('role', 'dialog');
+    menu.setAttribute('aria-modal', 'true');
+
+    const menuLinks = menu.querySelectorAll('a, button[data-close]');
+
+    function openMenu() {
+      menu.classList.add('is-open');
+      document.body.classList.add('no-scroll');
+      openBtn.setAttribute('aria-expanded', 'true');
+      setTimeout(() => closeBtn.focus(), 0);
+    }
+
+    function closeMenu() {
+      menu.classList.remove('is-open');
+      document.body.classList.remove('no-scroll');
+      openBtn.setAttribute('aria-expanded', 'false');
+      setTimeout(() => openBtn.focus(), 0);
+    }
+
+  openBtn.addEventListener('click', () => {
+  if (menu.classList.contains('is-open')) {
+    closeMenu();
+  } else {
+    openMenu();
+  }
+});
+    closeBtn.addEventListener('click', closeMenu);
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+        closeMenu();
+      }
+    });
+
+    menuLinks.forEach((el) => {
+      el.addEventListener('click', closeMenu);
+    });
+
+    const mql = window.matchMedia('(min-width: 768px)');
+    mql.addEventListener('change', (e) => {
+      if (e.matches) closeMenu();
+    });
+  })();
+</script>
 
     <script>
       const modal = document.querySelector("[data-modal]");
